@@ -1,0 +1,11 @@
+__python__/
+.vscode/
+.venv/
+venv/
+*.pyc
+log/
+*.pyc
+*.exe
+log/
+logs/
+*.log
