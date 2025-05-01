@@ -9,3 +9,5 @@ log/
 log/
 logs/
 *.log
+dist/
+logperformance.egg-info/
