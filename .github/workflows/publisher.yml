@@ -17,9 +17,9 @@ jobs:
         with:
           python-version: "3.x"
       - run: |
-          pip install poetry
+          pip install poetry pytest
           poetry install
-      # - run: pytest tests/
+      - run: pytest tests/
   release:
     needs: [build]
     runs-on: ubuntu-latest
@@ -34,7 +34,9 @@ jobs:
       - uses: casperdcl/deploy-pypi@v2
         with:
           password: ${{ secrets.PYPI_TOKEN }}
-          pip: poetry publish --username __token__ --password ${{ secrets.PYPI_TOKEN }} --build
+          pip: |
+            pip install poetry
+            poetry publish --username __token__ --password ${{ secrets.PYPI_TOKEN }} --build
       - run: |
           # Grab the version from pyproject.toml
           version=$(poetry version -s)
