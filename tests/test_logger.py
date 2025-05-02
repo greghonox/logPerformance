@@ -88,3 +88,4 @@ class TestLogPerformance:
         with patch.dict(os.environ, {"DEBUG_WRITE_FILE": "False"}):
             logger = LogPerformance()
             assert logger._instance
+            assert logger.initialized
