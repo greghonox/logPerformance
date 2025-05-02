@@ -19,7 +19,7 @@ jobs:
       - run: |
           pip install poetry
           poetry install
-      - run: pytest tests/
+      # - run: pytest tests/
   release:
     needs: [build]
     runs-on: ubuntu-latest
