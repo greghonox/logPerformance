@@ -4,8 +4,8 @@ with open("README.md", "r") as arq:
     readme = arq.read()
 
 setup(
-    name="wrapper-panda-video",
-    version="0.0.2",
+    name="logperformance",
+    version="0.3.0",
     license="MIT License",
     author="Gregorio Honorato",
     long_description=readme,
@@ -13,6 +13,6 @@ setup(
     author_email="greghono@gmail.com",
     keywords="logger",
     description="Classe que implementa um logger com funções de log performance, log error, log warning, log info, log debug, log critical, log alert, log emergency, log warning, log error, log critical, log alert, log emergency",
-    packages=["src"],
+    packages=["logperformance"],
     install_requires=["colorlog"],
 )

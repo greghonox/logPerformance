@@ -79,7 +79,7 @@ Private method that appends log messages with timestamp and level.
 ## Usage Example
 
 ```python
-from logger import LogPerformance
+from logperformance import LogPerformance
 
 log = LogPerformance()
 

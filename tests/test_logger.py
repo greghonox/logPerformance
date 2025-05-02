@@ -1,7 +1,7 @@
 import pytest
 import os
 import time
-from src import LogPerformance
+from logperformance import LogPerformance
 from unittest.mock import patch
 
 
