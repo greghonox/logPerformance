@@ -22,6 +22,9 @@ jobs:
           poetry install
       - run: pytest tests/
   release:
+    permissions:
+      id-token: write
+      contents: read
     needs: [build]
     runs-on: ubuntu-latest
     steps:
@@ -32,10 +35,4 @@ jobs:
       - run: |
           pip install poetry
           poetry build
-      - name: Publish package to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          password: ${{ secrets.PYPI_TOKEN }}
-          repository-url: https://test.pypi.org/legacy/
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          poetry publish --username __token__ --password "${{ secrets.PYPI_TOKEN }}"
