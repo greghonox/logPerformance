@@ -32,23 +32,10 @@ jobs:
       - run: |
           pip install poetry
           poetry build
-      - uses: casperdcl/deploy-pypi@v2
-        with:
-          password: ${{ secrets.PYPI_TOKEN }}
-      - run: |
-          pip install poetry
-          poetry publish --username __token__ --password ${{ secrets.PYPI_TOKEN }} --build
-      - run: |
-          # Grab the version from pyproject.toml
-          version=$(poetry version -s)
-          echo "Releasing for version $version"
-          echo "RELEASE_VERSION=$version" >> $GITHUB_ENV
-      - name: GitHub Release
-        uses: softprops/action-gh-release@v1
-      - name: Publish package to TestPyPI
+      - name: Publish package to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          password: ${{ secrets.TEST_PYPI_API_TOKEN }}
+          password: ${{ secrets.PYPI_TOKEN }}
           repository-url: https://test.pypi.org/legacy/
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
