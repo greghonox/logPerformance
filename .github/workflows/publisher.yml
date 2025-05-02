@@ -28,14 +28,16 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: "3.x"
+      - run: |
+          pip install poetry
+          poetry build
       - uses: casperdcl/deploy-pypi@v2
         with:
           password: ${{ secrets.PYPI_TOKEN }}
-          pip: wheel -w dist/ --no-deps .
-
+          pip: poetry publish --username __token__ --password ${{ secrets.PYPI_TOKEN }} --build
       - run: |
-          # Grab the version of the package
-          version=$(cat setup.py | grep version | cut -d "'" -f 2)
+          # Grab the version from pyproject.toml
+          version=$(poetry version -s)
           echo "Releasing for version $version"
           echo "RELEASE_VERSION=$version" >> $GITHUB_ENV
       - name: GitHub Release
