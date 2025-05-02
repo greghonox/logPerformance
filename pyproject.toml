@@ -13,7 +13,7 @@ dependencies = [
 
 [tool.poetry]
 packages = [
-    { include = "logperformance" }
+    { include = "src"}
 ]
 
 [project.optional-dependencies]
