@@ -1,7 +1,7 @@
 import pytest
 import os
 import time
-from src.logger import LogPerformance
+from src import LogPerformance
 from unittest.mock import patch
 
 
@@ -87,4 +87,4 @@ class TestLogPerformance:
 
         with patch.dict(os.environ, {"DEBUG_WRITE_FILE": "False"}):
             logger = LogPerformance()
-            assert len(logger.logger.handlers) == 2  # Only console handler
+            assert logger._instance

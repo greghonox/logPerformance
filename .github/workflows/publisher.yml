@@ -18,6 +18,7 @@ jobs:
           python-version: "3.x"
       - run: |
           pip install poetry pytest
+          pip install -e .
           poetry install
       - run: pytest tests/
   release:
