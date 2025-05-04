@@ -41,9 +41,7 @@ class LogPerformance:
 
             file_handler = logging.FileHandler(log_filepath, encoding="utf-8")
             file_handler.setFormatter(
-                logging.Formatter(
-                    "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-                )
+                logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
             )
             logger.addHandler(file_handler)
             logger.propagate = (
