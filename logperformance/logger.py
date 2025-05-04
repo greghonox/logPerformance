@@ -46,12 +46,14 @@ class LogPerformance:
                 )
             )
             logger.addHandler(file_handler)
+            logger.propagate = (
+                False  # Prevent the logger from propagating to the root logger
+            )
         logger.addHandler(handler)
 
         log_system = getenv("LOG_LEVEL")
         logger.setLevel(logging.INFO if log_system is None else logging.DEBUG)
         if log_system == "DEBUG":
-            logging.basicConfig()
             logging.getLogger("sqlalchemy.engine").setLevel(logging.INFO)
         self.logger = logger
         self.log_messages = ""
