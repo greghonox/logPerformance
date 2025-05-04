@@ -5,7 +5,7 @@ with open("README.md", "r") as arq:
 
 setup(
     name="logperformance",
-    version="0.6.0",
+    version="0.8.0",
     license="MIT License",
     author="Gregorio Honorato",
     long_description=readme,

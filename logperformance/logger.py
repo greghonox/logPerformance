@@ -45,8 +45,8 @@ class LogPerformance:
                     "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
                 )
             )
-            logger.addHandler(handler)
             logger.addHandler(file_handler)
+        logger.addHandler(handler)
 
         log_system = getenv("LOG_LEVEL")
         logger.setLevel(logging.INFO if log_system is None else logging.DEBUG)
