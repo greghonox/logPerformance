@@ -25,7 +25,9 @@ class LogPerformance:
             "format_string",
             "%(log_color)s%(asctime)s - %(name)s - %(levelname)s - %(message)s",
         )
-        handler.setFormatter(colorlog.ColoredFormatter(format_string))
+        handler.setFormatter(
+            colorlog.ColoredFormatter(format_string, datefmt="%H:%M:%S")
+        )
 
         logger = colorlog.getLogger(__name__)
         if (
