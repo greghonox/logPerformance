@@ -16,22 +16,22 @@ class LogPerformance:
             cls._instance = super(LogPerformance, cls).__new__(cls, *args, **kwargs)
         return cls._instance
 
-    def __init__(self) -> None:
+    def __init__(self, *args, **kwargs) -> None:
         if hasattr(self, "initialized") and self.initialized:
             return
 
         handler = colorlog.StreamHandler()
-        handler.setFormatter(
-            colorlog.ColoredFormatter(
-                "%(log_color)s%(asctime)s - "
-                "%(name)s - %(levelname)s - "
-                "%(message)s"
-            )
+        format_string = kwargs.get(
+            "format_string",
+            "%(log_color)s%(asctime)s - %(name)s - %(levelname)s - %(message)s",
         )
+        handler.setFormatter(colorlog.ColoredFormatter(format_string))
 
         logger = colorlog.getLogger(__name__)
         if (
-            not logger.handlers and getenv("DEBUG_WRITE_FILE", "True") == "True"
+            not logger.handlers
+            and getenv("DEBUG_WRITE_FILE", "True") == "True"
+            and getenv("LOG_LEVEL") != "DEBUG"
         ):  # write file log
             log_directory = path.join(path.dirname(getcwd()), "log")
             self.create_directory(log_directory)

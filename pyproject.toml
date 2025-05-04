@@ -1,6 +1,6 @@
 [project]
 name = "logperformance"
-version = "0.4.0"
+version = "0.5.0"
 description = "Classe que implementa um logger com funções de log performance, log error, log warning, log info, log debug, log critical, log alert, log emergency, log warning, log error, log critical, log alert, log emergency"
 authors = [
     {name = "greghono@gmail.com"}
