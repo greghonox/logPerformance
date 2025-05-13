@@ -23,7 +23,7 @@ class LogPerformance:
         handler = colorlog.StreamHandler()
         format_string = kwargs.get(
             "format_string",
-            "%(log_color)s%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+            "%(log_color)s%(asctime)s - %(levelname)s - %(message)s",
         )
         handler.setFormatter(
             colorlog.ColoredFormatter(format_string, datefmt="%H:%M:%S")
